@@ -7,6 +7,6 @@ Prezentace: https://engeto.cz/python-a-robot/python-a-robot-1.pdf
 * [Základy Pythonu](basics)
 * [Objektově orientované programování](oop)
 * [Lineární regrese pomocí pythonu a numpy](regression)
-* [Jednoduchá aplikace pomocí TkInteru](calculator)
+* [Jednoduchá aplikace pomocí TkInteru](converter)
 * [Distribuce pomocí setuptools](packaging)
 * [Vizualizace spolehlivosti](visualization)

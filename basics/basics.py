@@ -427,3 +427,6 @@ else:
     print('Not going here, it is bad...')
 finally:
     print('This is always executed, no matter what.')
+
+
+print('Magic:', [item for item in dir() if item.startswith('__')])

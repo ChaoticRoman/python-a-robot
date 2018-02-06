@@ -22,6 +22,7 @@ variable = "abc" or nonsense  # python uses lazy evaluation, i.e.
 
 for i in range(3):
     print(i, end=" ")  # no new line in the end
+
 print()  # new line here
 
 collector, new_text = "", True
@@ -77,6 +78,14 @@ else:
 i = -42
 f1, f2 = 42.0, 4.2e1
 
+import math
+
+# https://docs.python.org/3/library/math.html#math.isclose
+print(math.isclose(f1, f2))
+
+print(type(math.nan), type(math.inf), type(-math.inf))
+print(1 / math.inf)
+
 # strings with lot of build-in function and slices too
 a = "Python is hard!".replace("hard", "easy")
 print(a)
@@ -85,7 +94,9 @@ print(a[:6] + a[-1])  # slices are nice,
                       # negative slice counts from the end
 x = "abcdef"
 print(x, "reversed is", x[::-1])  # you can also specify step, negative step goes backward
+
 print("Surprise:", x[:-1:-1])  # however it can be confusing sometimes
+# Explanation: https://stackoverflow.com/a/41430981
 
 print("Hello!".find("!"))  #  strings have useful functions, see "pydoc3 str" or help(str)
 
@@ -176,9 +187,7 @@ print("1 + 1 =", sum_it(1, 1))
 
 # you can specify arbitrary number of arguments, notice we are redefining sum_it above
 def sum_it(*args):
-    """Sums numbers and return result, notice we have just
-    reinvented "sum" built-in function.
-    """
+    """Sums numbers and return result."""
     result = 0
     for num in args:
         result += num
@@ -226,7 +235,7 @@ def write_x():
     global x  # but you can specify that you mean global variable and it works
     x = 6
 write_x()
-print_x()  # damn, five again
+print_x()  # finally six
 
 print("For nested functions:")
 def nested():
@@ -240,7 +249,50 @@ def nested():
 
 nested()
 
+print('Closures:')
+x = 5
+def f():
+    x = 45
+    def g():
+        print(x)
+    print(g.__closure__)
+    print(g.__closure__[0].cell_contents)
+    return g
 
+a = f()
+a()
+x = 10
+a()
+
+print('Decorators:')
+def decorate(f):
+    print('We just decorated some function')
+    return f
+
+@decorate
+def hi():
+    print('Hi!')
+
+print(hi())
+
+print('Parametric decorators:')
+def get_decorator(count, decor_above, decor_below):
+    def decorator(f):
+        print(count * decor_above)
+        result = f()
+        print(count * decor_below)
+        def return_result():
+            return result
+        return return_result
+    return decorator
+
+@get_decorator(16, 'v', '^')
+def hello():
+    print('Hello!')
+    return 42
+
+a = hello()
+print(a)
 # Context managers are useful when you would like to have some set up and tear down functions
 
 # reading files old way
@@ -271,6 +323,7 @@ print(evens)
 ## Generators: iterator that "returns" one element at time
 # save memory, can't use indices, slices, len and similar
 def gen():
+    """This is a function that returns generator"""
     for i in range(10):
         yield i**2  # just use yield instead of return
 
@@ -282,6 +335,20 @@ print('Now g is empty:')
 for i in g:
     print(i, end=" ")
 
+# we can have even infinite generators
+def get_squares_generator():
+    i = 0
+    while True:
+        yield i**2
+        i += 1
+
+print(get_squares_generator)
+
+g = get_squares_generator()  # g is a generator
+print(g)
+
+print(next(g), next(g), next(g))
+
 # it is nice when you need e.g. process really big file line by line
 def process_big_file_line_by_line(filename):
     with open(filename) as f:
@@ -290,10 +357,14 @@ def process_big_file_line_by_line(filename):
 
 process_big_file_line_by_line('README.md')
 
-def process_big_file_by_chunks(filename, chunk_size=1024):
+def process_big_file_by_chunks(filename, chunk_size=64):
     def generator():
         with open(filename, 'rb') as f:
-            yield f.read(chunk_size)
+            while True:
+                data = f.read(chunk_size)
+                if not data:
+                    break
+                yield data
 
     for chunk in generator():
         print(chunk)  # some processing, here we just print
@@ -324,3 +395,35 @@ try:
 except ZeroDivisionError:
     print('No zero division, please :(')
 
+try:
+    try:
+        raise RuntimeError('Boom!')
+    except RuntimeError:
+        print('Something went wrong, just saying...')
+        raise
+except Exception as e:
+    print('Something happened above, see:')
+    print(e)
+    print('Recovering...')
+
+print('\nGood:\n')
+
+try:
+    pass
+except:
+    print('Not going here, because everything is fine.')
+else:
+    print('Nothing wrong happened!')
+finally:
+    print('This is always executed, no matter what.')
+
+print('\nBad:\n')
+
+try:
+    assert 'War' is 'Peace'
+except Exception as e:
+    print(type(e), e.args, e)
+else:
+    print('Not going here, it is bad...')
+finally:
+    print('This is always executed, no matter what.')

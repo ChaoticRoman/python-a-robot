@@ -5,7 +5,7 @@ hour = dt.timedelta(hours=1)
 start, end = dt.datetime(2018, 1, 1), dt.datetime(2018, 2, 1)
 missing_start, missing_end = dt.datetime(2018, 1, 4), dt.datetime(2018, 1, 6)
 N = 200
-format = '%Y-%m-%dT%H-%M-%SZ'
+format = '%Y-%m-%dT%H:%M:%SZ'
 possibilities = ['0', '1']
 filename = 'data.txt'
 

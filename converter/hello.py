@@ -1,3 +1,5 @@
+# Source: https://docs.python.org/3/library/tkinter.html#a-simple-hello-world-program
+
 import tkinter as tk
 
 class Application(tk.Frame):

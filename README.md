@@ -2,7 +2,7 @@
 
 ## Den první
 
-(Prezentace)[python-a-robot-1.pdf]
+[Prezentace](python-a-robot-1.pdf)
 
 * [Základy Pythonu](basics)
 * [Objektově orientované programování](oop)

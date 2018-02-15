@@ -11,8 +11,7 @@ Test 1
 *** Keywords ***
 Ulož globální hodnotu "ABC"
     ${output} =  Run  echo ABC
-    set suite variable  ${globalizácia}  ${output}
+    Set suite variable  ${globalizácia}  ${output}
 
 Testuj, zda je globální hodnota "ABC"
-    Log  ${globalizácia}
     Should Be Equal  ${globalizácia}  ABC

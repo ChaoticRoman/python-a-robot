@@ -1,6 +1,6 @@
 # Příklady pro kurz "Python a Robot Framework" připravený pro ENGETO, s.r.o.
 
-Předpoklady: Python 3 a git
+Předpoklady: Python 3, setuptools, numpy, matplotlib a git
 
 ## Den první
 
@@ -27,4 +27,10 @@ Předpoklady: Python 3 a git
 
 [Prezentace](python-a-robot-4.pdf)
 
-* [Příklady použití Robot Framework](robot)
+* [Pokročilé použití Robot Frameworku](robot)
+
+## Den pátý
+
+[Prezentace](python-a-robot-5.pdf)
+
+* [Uživatelská rozšíření Robot Frameworku](robot)

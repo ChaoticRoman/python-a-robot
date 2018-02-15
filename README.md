@@ -1,5 +1,7 @@
 # Příklady pro kurz "Python a Robot Framework" připravený pro ENGETO, s.r.o.
 
+Předpoklady: Python 3 a git
+
 ## Den první
 
 [Prezentace](python-a-robot-1.pdf)

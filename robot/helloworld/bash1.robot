@@ -9,6 +9,6 @@ Testing bash commands
     ${status}=  Convert To String  ${status}
     Should be Equal  ${status}  0
 
-    ${status}=  Run And Return Rc  true
+    ${status}=  Run And Return Rc  false
     ${status}=  Convert To String  ${status}
     Should be Equal  ${status}  1

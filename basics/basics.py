@@ -2,7 +2,6 @@
 
 
 ## Python has statements
-print("Hello world!")
 a = "Python is cool"
 b, c = 10, 10.0
 d = b**2
@@ -10,6 +9,7 @@ is_it_fine = True
 is_it_not_fine = not is_it_fine  # Python is case-sensitive, e.g.
                                  # using IS_IT_FINE would be error
 
+print("Hello world!")
 
 ## Python has if, else, for and while as any other language
 if 1 < 2 and 42 and "abc":  # most types can be directly used as a boolean
@@ -49,7 +49,7 @@ for i in range(0):
 else:
     print('This is reached.')
 
-for i in range(0):
+for i in range(10):
     continue  # continue skip rest of the current 
 else:
     print('This is reached too.')

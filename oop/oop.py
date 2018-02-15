@@ -1,7 +1,11 @@
 class Animal:
+    """Animal class for fun"""
     def __init__(self, name):
         print('Animal named {} was born'.format(name))
         self.name = name
+
+    @staticmethod
+    def f(): print('f')
 
     @classmethod
     def specie(cls):
@@ -17,7 +21,9 @@ Animal.is_animal('some string')
 print()
 
 a = Animal('ET')
+
 a.specie()
+
 Animal.is_animal(a)
 a.is_animal(a)
 
@@ -35,9 +41,6 @@ class Dog(Animal):
     def bark(self):
         print('{}: Haf'.format(self.name))
 
-    @classmethod
-    def specie(cls):
-        print('Dog of class', cls)
 
 rex = Dog('Rex')
 rex.specie()
@@ -48,7 +51,7 @@ rex.is_animal(rex)
 
 print('Is', a, 'of type Animal:', type(a) == Animal)
 print('Is', rex, 'of type Animal:', type(rex) == Animal)
-print('Is', a, 'of type Dog:', type(rex) == Dog)
+print('Is', rex, 'of type Dog:', type(rex) == Dog)
 
 fido = Dog('Fido')
 

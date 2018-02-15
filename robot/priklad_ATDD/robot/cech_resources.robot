@@ -6,14 +6,14 @@ Library  OperatingSystem
 *** Keywords ***
 
 vyprázdníme cech
-    pycech  --clear
+    cech  --clear
 
 cech by měl být prázdný
-    ${výstup} =  pycech  --status
+    ${výstup} =  cech  --status
     Should Be Equal  ${výstup}  ${EMPTY}
 
 
-pycech
+cech
     [Arguments]  ${arg}
     ${výstup} =  Run  python3 ../scripts/cech.py ${arg}
     [Return]  ${výstup}

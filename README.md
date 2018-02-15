@@ -19,6 +19,10 @@
 
 [Prezentace](python-a-robot-3.pdf)
 
-## Den čtverý
+* [Příklady jednoduchých test case pro Robot Framework](robot/helloworld)
+
+## Den čtvrtý
 
 [Prezentace](python-a-robot-4.pdf)
+
+* [Příklady použití Robot Framework](robot)

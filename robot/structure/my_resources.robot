@@ -1,6 +1,7 @@
 *** Keywords ***
 My Logging
     [Arguments]      @{arg}
-    [Documentation]  Special excusice logging 
+    [Documentation]  Special excercise with logging 
+    ...  Story continues here...
     Log Many         @{arg}
 

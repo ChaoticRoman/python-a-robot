@@ -38,11 +38,10 @@ class TestFoo(unittest.TestCase):
     # First test to check basic functionality of tested function
     # NOTE: Notice that mocks are passed to arguments in opposite order
     #       then they are patched
-    @patch("test_foo.print")
     @patch("test_foo.f")
     @patch("test_foo.my_print")
     @patch("test_foo.time.sleep")
-    def test_foo_patch(self, mock_sleep, mock_my_print, mock_f, mock_print):
+    def test_foo_patch(self, mock_sleep, mock_my_print, mock_f):
 
         # We dont want real f to be called, but we want to fake
         # f returning value
@@ -50,11 +49,12 @@ class TestFoo(unittest.TestCase):
 
         # Getting output of main function. Because sleep and my_print
         # are mocked, function wont take so much time and wont print anything
-        result = chatty_function_which_takes_a_lot_of_time(1, 3)
+        with patch("test_foo.print"):
+            result = chatty_function_which_takes_a_lot_of_time(1, 3)
 
-        # This would print nothing because print is mocked out.
-        # Often is better to separate your test code and code under the test.
-        print('Hello from test.')
+        print('Hello from test. Sleep was called {} times.'.format(
+            len(mock_sleep.call_args_list)
+        ))
 
         # Testing if result is equal to expected output (in this case 1)
         self.assertEqual(result, 1)

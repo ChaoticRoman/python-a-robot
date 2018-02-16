@@ -3,4 +3,4 @@ def single_read():
         return f.read()
 
 if __name__ == "__main__":
-    single_read()
+    print(single_read())

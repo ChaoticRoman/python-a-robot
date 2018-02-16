@@ -5,10 +5,10 @@ Library  OperatingSystem
 Testing bash commands
     Log  Hello World!
 
-    ${status}=  Run And Return Rc  true
-    ${status}=  Convert To String  ${status}
+    ${status} =  Run And Return Rc  true
+    ${status} =  Convert To String  ${status}
     Should be Equal  ${status}  0
 
-    ${status}=  Run And Return Rc  false
-    ${status}=  Convert To String  ${status}
-    Should be Equal  ${status}  1
+    ${status} =  Run And Return Rc  false
+    # ${status} =  Convert To String  ${status}
+    Should be Equal  ${status}  ${1}

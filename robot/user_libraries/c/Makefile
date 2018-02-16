@@ -1,3 +1,5 @@
+# Source: https://stackoverflow.com/questions/27929234/swig-c-to-python-importerror-undefined-symbol
+
 all: py3
 
 py2: swig
